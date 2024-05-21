@@ -37,6 +37,8 @@ export const getCabins = async function () {
     .select('id, name, maxCapacity, regularPrice, discount, image')
     .order('name');
 
+  // await new Promise((res) => setTimeout(res, 5000));
+
   if (error) {
     console.error(error);
     throw new Error('Cabins could not be loaded');
@@ -127,6 +129,8 @@ export async function getSettings() {
     console.error(error);
     throw new Error('Settings could not be loaded');
   }
+
+  // await new Promise((res) => setTimeout(res, 5000));
 
   return data;
 }

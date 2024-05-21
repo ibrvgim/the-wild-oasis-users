@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 function NavLink({ children, href }) {
   const path = usePathname();
-  const isActive = href === path;
+  const isActive = path.includes(href);
 
   return (
     <Link

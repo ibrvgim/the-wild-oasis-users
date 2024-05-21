@@ -1,16 +1,15 @@
-import CabinCard from '@/components/cabins/CabinCard';
-import LoaderIndicator from '@/components/general/LoaderIndicator';
-import { getCabins } from '@/libraries/data-service';
+import CabinsList from '@/components/cabins/CabinsList';
+import Filter from '@/components/cabins/Filter';
+import ReservationReminder from '@/components/cabins/ReservationReminder';
+import SuspenseLoader from '@/components/general/SuspenseLoader';
 import { Suspense } from 'react';
 
 export const metadata = {
   title: 'Cabins',
 };
 
-export const revalidate = 3600;
-
-async function CabinsPage() {
-  const cabins = await getCabins();
+function CabinsPage({ searchParams }) {
+  const filter = searchParams?.capacity || 'all';
 
   return (
     <div>
@@ -26,21 +25,14 @@ async function CabinsPage() {
         Welcome to paradise.
       </p>
 
+      <Filter />
+
       <Suspense
-        fallback={
-          <div className='h-full flex flex-col items-center mt-[8rem]'>
-            <LoaderIndicator />
-            <p className='mt-5'>loading cabins...</p>
-          </div>
-        }
+        fallback={<SuspenseLoader placeholder='loading cabins...' />}
+        key={filter}
       >
-        {cabins.length > 0 && (
-          <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14'>
-            {cabins.map((cabin) => (
-              <CabinCard cabin={cabin} key={cabin.id} />
-            ))}
-          </div>
-        )}
+        <CabinsList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
