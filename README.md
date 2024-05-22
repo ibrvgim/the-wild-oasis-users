@@ -17,7 +17,7 @@ For the server part SUPABASE was used: https://supabase.com/
 
 ### Website link
 
-[THE WILD OASIS](https://the-wild-oasis-sigma-eight.vercel.app/)
+[THE WILD OASIS](https://the-wild-oasis-vacations.vercel.app/)
 
 ### Setup
 
