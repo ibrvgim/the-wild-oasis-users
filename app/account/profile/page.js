@@ -1,12 +1,15 @@
+import { auth } from '@/authentication/auth';
 import ProfileForm from '@/components/account/ProfileForm';
 import SelectCountry from '@/components/account/SelectCountry';
+import { getGuest } from '@/libraries/data-service';
 
 export const metadata = {
   title: 'Update Profile',
 };
 
-export default function ProfilePage() {
-  const nationality = 'portugal';
+export default async function ProfilePage() {
+  const session = await auth();
+  const user = await getGuest(session?.user.email);
 
   return (
     <div>
@@ -19,12 +22,12 @@ export default function ProfilePage() {
         faster and smoother. See you soon!
       </p>
 
-      <ProfileForm>
+      <ProfileForm user={user}>
         <SelectCountry
           name='nationality'
           id='nationality'
           className='px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm'
-          defaultCountry={nationality}
+          defaultCountry={user?.nationality}
         />
       </ProfileForm>
     </div>

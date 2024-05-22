@@ -2,21 +2,22 @@ import { getCountries } from '@/libraries/data-service';
 
 async function SelectCountry({ defaultCountry, name, id, className }) {
   const countries = await getCountries();
-
-  const flag =
-    countries.find((country) => country.name === defaultCountry)?.flag ?? '';
+  const allCountries = countries.data.map((country) => country.country);
 
   return (
     <select
       name={name}
       id={id}
-      defaultValue={`${defaultCountry}%${flag}`}
+      defaultValue={defaultCountry}
       className={className}
     >
-      <option value=''>Select country...</option>
-      {countries.map((c) => (
-        <option key={c.name} value={`${c.name}%${c.flag}`}>
-          {c.name}
+      <option value='' className='hidden'>
+        Select country...
+      </option>
+
+      {allCountries.map((country) => (
+        <option key={country} value={country}>
+          {country}
         </option>
       ))}
     </select>
