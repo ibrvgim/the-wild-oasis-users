@@ -160,6 +160,17 @@ export async function createBooking(newBooking) {
   return data;
 }
 
+export async function createContact(newContact) {
+  const { data, error } = await supabase.from('contact').insert([newContact]);
+
+  if (error) {
+    console.error(error);
+    throw new Error('Contact could not be created');
+  }
+
+  return data;
+}
+
 // UPDATE
 export async function updateGuest(id, updatedFields) {
   const { data, error } = await supabase

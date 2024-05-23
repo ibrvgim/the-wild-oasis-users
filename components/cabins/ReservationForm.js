@@ -5,13 +5,14 @@ import { useReservation } from '@/contexts/ReservationContext';
 import { differenceInDays } from 'date-fns';
 import Image from 'next/image';
 import ReservationFormButton from './ReservationFormButton';
+import CustomCheckbox from '../general/CustomCheckbox';
 
-function ReservationForm({ cabin, user }) {
+function ReservationForm({ cabin, user, breakfastPrice }) {
   const { range, resetRange } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = cabin;
 
-  const startDate = range.from;
-  const endDate = range.to;
+  const startDate = range?.from;
+  const endDate = range?.to;
 
   const numNights = differenceInDays(endDate, startDate);
   const cabinPrice = numNights * (regularPrice - discount);
@@ -82,6 +83,8 @@ function ReservationForm({ cabin, user }) {
             placeholder='Any pets, allergies, special requirements, etc.?'
           />
         </div>
+
+        <CustomCheckbox>include breakfast ( {breakfastPrice}$ )</CustomCheckbox>
 
         <div className='flex justify-end items-center gap-6'>
           {!(startDate && endDate) ? (

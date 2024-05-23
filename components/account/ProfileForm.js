@@ -2,7 +2,7 @@
 
 import { updateProfile } from '@/actions/userFormAction';
 import { useFormState } from 'react-dom';
-import FormButton from './FormButton';
+import FormsButton from '../general/FormsButton';
 
 function ProfileForm({ children, user }) {
   const { fullName, email, nationalID } = user;
@@ -61,7 +61,7 @@ function ProfileForm({ children, user }) {
       </div>
 
       <div className='flex justify-end items-center gap-6'>
-        <FormButton />
+        <FormsButton loadingText='updating...' buttonText='Update profile' />
       </div>
     </form>
   );

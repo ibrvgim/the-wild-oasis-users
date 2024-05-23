@@ -1,13 +1,16 @@
 import { editReservation } from '@/actions/reservationActions';
-import EditFormButton from '@/components/account/EditFormButton';
+import CustomCheckbox from '@/components/general/CustomCheckbox';
+import FormsButton from '@/components/general/FormsButton';
 import GoBackButton from '@/components/general/GoBackButton';
-import { getBooking, getCabin } from '@/libraries/data-service';
+import { getBooking, getCabin, getSettings } from '@/libraries/data-service';
 
 export default async function EditReservationPage({ params }) {
   const reservationId = params.slugEdit;
-
   const booking = await getBooking(reservationId);
-  const cabin = await getCabin(booking.cabinId);
+  const [cabin, settings] = await Promise.all([
+    getCabin(booking.cabinId),
+    getSettings(),
+  ]);
 
   return (
     <div>
@@ -61,8 +64,15 @@ export default async function EditReservationPage({ params }) {
           />
         </div>
 
-        <div className='flex justify-end items-center gap-6'>
-          <EditFormButton />
+        <CustomCheckbox defaultValue={booking.hasBreakfast}>
+          include breakfast ( {settings.breakfastPrice}$ )
+        </CustomCheckbox>
+
+        <div className='flex justify-end items-center mt-[0.5rem]'>
+          <FormsButton
+            loadingText='updating...'
+            buttonText='Update reservation'
+          />
         </div>
       </form>
     </div>

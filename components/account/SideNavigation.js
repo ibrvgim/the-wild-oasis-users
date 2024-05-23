@@ -2,6 +2,7 @@ import {
   CalendarDaysIcon,
   HomeIcon,
   UserIcon,
+  PhoneIcon,
 } from '@heroicons/react/24/solid';
 
 import SignOutButton from './SignoutButton';
@@ -19,9 +20,14 @@ const navLinks = [
     icon: <CalendarDaysIcon className='h-5 w-5 text-primary-600' />,
   },
   {
-    name: 'Guest profile',
+    name: 'Guest Profile',
     href: '/account/profile',
     icon: <UserIcon className='h-5 w-5 text-primary-600' />,
+  },
+  {
+    name: 'Contact Us',
+    href: '/account/contact',
+    icon: <PhoneIcon className='h-5 w-5 text-primary-600' />,
   },
 ];
 

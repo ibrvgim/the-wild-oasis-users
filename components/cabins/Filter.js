@@ -7,11 +7,11 @@ function Filter() {
     <div className='border border-primary-800 flex justify-between'>
       <Button filter='all'>All cabins</Button>
 
-      <Button filter='small'>Small cabins ( 1 &mdash; 3 guests)</Button>
+      <Button filter='small'>Small cabins ( 1 &mdash; 3 guests )</Button>
 
-      <Button filter='medium'>Medium cabins ( 4 &mdash; 7 guests)</Button>
+      <Button filter='medium'>Medium cabins ( 4 &mdash; 7 guests )</Button>
 
-      <Button filter='large'>Large cabins ( 8 &mdash; 10 guests)</Button>
+      <Button filter='large'>Large cabins ( 8 &mdash; 10 guests )</Button>
     </div>
   );
 }
