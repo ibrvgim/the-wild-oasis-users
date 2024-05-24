@@ -12,7 +12,7 @@ function Logo() {
         alt='The Wild Oasis logo'
         priority
       />
-      <span className='text-xl font-semibold text-primary-100'>
+      <span className='hidden text-xl font-semibold text-primary-100 md:inline-block'>
         The Wild Oasis
       </span>
     </Link>

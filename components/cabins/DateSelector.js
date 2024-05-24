@@ -29,7 +29,10 @@ function DateSelector({ settings, cabin, bookedDates }) {
   const { minBookingLength, maxBookingLength } = settings;
 
   return (
-    <div className='flex flex-col justify-between'>
+    <div
+      className='flex flex-col justify-between border
+    border-primary-800'
+    >
       <DayPicker
         className='pt-12 place-self-center'
         mode='range'

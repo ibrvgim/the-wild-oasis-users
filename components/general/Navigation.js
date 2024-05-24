@@ -8,12 +8,12 @@ async function Navigation() {
   const user = session?.user;
 
   return (
-    <nav className='z-10 text-xl'>
-      <ul className='flex gap-16 items-center'>
+    <nav className='text-lg sm:text-xl'>
+      <ul className='flex gap-8 items-center lg:gap-16 sm:gap-12'>
         <li>
           <NavLink href='/cabins'>Cabins</NavLink>
         </li>
-        <li>
+        <li className='hidden sm:inline-block'>
           <NavLink href='/about'>About</NavLink>
         </li>
         <li>
@@ -21,7 +21,7 @@ async function Navigation() {
         </li>
 
         {user?.name && user?.image && (
-          <li>
+          <li className='hidden lg:inline-block'>
             <Link href='/account' className='flex items-center gap-4'>
               <Image
                 src={user.image}
